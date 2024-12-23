@@ -1,0 +1,82 @@
+{{ define "body" }}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+        }
+        
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .content {
+            padding: 20px;
+            overflow: auto; 
+            max-height: 300px; 
+        }
+        
+        .competencies {
+            margin-top: 20px;
+        }
+        
+        .competency {
+            margin-bottom: 10px;
+        }
+        .bg-primary {
+            background-color: #333 !important; /* Основной цвет фона */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .btn-primary {
+            background-color: #333 !important; /* Основной цвет кнопки */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 2px solid #ffffff; /* Цвет окантовки */
+        }
+        .btn-primary:hover {
+            background-color:rgb(101, 101, 128);
+            color: white;
+            border: 2px solid #000000; /* Цвет окантовки */
+        }
+    </style>
+
+    <div class="h5 bg-primary text-white text-center p-2 m-2"> Пришлите мне ваши контакты для связи и я свяжусь с вами в ближайшее время </div>
+    {{ if gt (len .Errors) 0 }}
+        <ul class="text-dange mt-3">
+            {{ range .Errors }}
+                <li> {{ . }} </li>
+            {{ end }}
+        </ul>
+    {{ end }}
+
+    <form method="post" class="m-2">
+        <div class="form-group my-1">
+            <label>Ваше имя:</label>
+            <input name="name" class="form-control" value="{{ .Name }}" />
+        </div>
+        <div class="form-group my-1">
+            <label>Ваш email:</label>
+            <input name="email" class="form-control" value="{{ .Email }}" />
+        </div>
+        <div class="form-group my-1">
+            <label>Ваш телефон:</label>
+            <input name="phone" class="form-control" value="{{ .Phone }}" />
+        </div>
+        <button class="btn btn-primary mt-3" type="submit"> Отправить </button>
+    </form>
+
+{{ end }}

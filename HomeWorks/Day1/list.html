@@ -1,0 +1,22 @@
+{{ define "body" }}
+
+<div class="text-center p-2">
+    <h6>Участвовал в проектах:</h6>
+    <table class="table table-bordered table-striped table-sm">
+        <thead>
+            <tr><th>Проект</th><th>Компания</th><th>Роль</th><th>Период работы на проекте</th></tr>
+        </thead>
+        <tbody>
+            {{ range . }}
+                <tr>
+                    <td>{{ .Project }}</td>
+                    <td>{{ .Company }}</td>
+                    <td>{{ .Role }}</td>
+                    <td>{{ .ProjectPeriod }}</td>
+                </tr>
+            {{ end }}
+        </tbody>
+    </table>
+</div>
+
+{{ end }}

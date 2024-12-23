@@ -1,0 +1,101 @@
+{{ define "body" }}
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница с ключевыми компетенциями</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+        }
+        
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .content {
+            padding: 20px;
+            overflow: auto; 
+            max-height: 300px; 
+        }
+        
+        .competencies {
+            margin-top: 20px;
+        }
+        
+        .competency {
+            margin-bottom: 10px;
+        }
+        .btn-primary {
+            background-color:rgb(33, 33, 33); /* Основной цвет кнопки */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 2px solid #ffffff; /* Цвет окантовки */
+        }
+        .btn-primary:hover {
+            background-color:rgb(101, 101, 128);
+            color: white;
+            border: 2px solid #000000; /* Цвет окантовки */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Ключевые компетенции</h1>
+        </div>
+        <div class="content">
+            <div class="competencies">
+                <div class="competency">
+                    <strong># Организация процесса обеспечения качества</strong>
+                </div>
+                <div class="competency">
+                    <strong># Управление командой</strong>
+                </div>
+                <div class="competency">
+                    <strong># Технологии</strong>
+                    <ul>
+                        <li>Go</li>
+                        <li>Python</li>
+                        <li>Linux</li>
+                        <li>Docker</li>
+                        <li>Git</li>
+                        <li>Ansible</li>
+                        <li>Gitlab</li>
+                        <li>Locust</li>
+                        <li>Allure</li>
+                        <li>Pytest</li>
+                        <li>RabbitMQ</li>
+                        <li>Fiddler</li>
+                        <li>Wireshark</li>
+                        <li>Windows Server</li>
+                        <li>macOS</li>
+                        <li>VMware</li>
+                        <li>Hyper-V</li>
+                        <li>KVM</li>
+                        <li>Сетевое оборудование</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<div class="text-center">
+    <a class="btn btn-primary" href="/form"> Связаться со мной </a>
+</div>
+{{ end }}
+

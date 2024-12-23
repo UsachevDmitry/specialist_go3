@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Резюме </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    nav {
+        width: 100%;
+        background-color: #333;
+        color: white;
+        padding: 1em;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: white;
+        padding: 1em;
+        display: block;
+    }
+
+    .logo {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .project-link {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .project-link:hover {
+        background-color: #444;
+        color: white;
+    }
+</style>
+<body class="p-2">
+    <header> 
+        / <a href="/" class="logo">Главная</a> 
+        / <a href="/list" class="project-link">Проекты</a> /
+    </header>
+     <div class="header">
+        <h1>Усачев Дмитрий</h1>
+        <h2>IT Специалист</h2>
+    </div>
+    {{ block "body" . }} Content here {{ end }}
+</body>
+</html>
