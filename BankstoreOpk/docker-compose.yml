@@ -1,0 +1,19 @@
+services:
+  db:
+    container_name: postgresdb
+    image: postgres:17.2
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: P@ssw0rd
+    volumes:
+      - bankdb-data2:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+volumes:
+  bankdb-data2:
+
+# psql -h localhost -p 5432 -U postgres
+# create database test;
+#\c test
+#\du
