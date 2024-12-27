@@ -3,8 +3,10 @@ package main
 import (
 	"BankstoreOpk/api"
 	db "BankstoreOpk/db/sqlc"
+	"BankstoreOpk/utils"
 	"context"
 	"log"
+
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
@@ -15,8 +17,12 @@ const (
 
 
 
-func Main() {
-	pool, err := pgxpool.New(context.Background(), dbSource)
+func main() {
+	config, err := utils.LoadConfig(".")
+	if err != nil {
+		log.Fatal("can not config file", err)
+	}
+	pool, err := pgxpool.New(context.Background(), config.DBSource)
 	if err != nil {
 		log.Fatal("can not connect to db", err)
 	}

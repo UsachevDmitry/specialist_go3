@@ -1,25 +1,24 @@
-
 package db
 
 import (
+	"BankstoreOpk/utils"
 	"context"
 	"log"
 	"os"
 	"testing"
+
 	"github.com/jackc/pgx/v5/pgxpool"
-
-)
-
-const (
-	dbSource = "postgresql://postgres:P@ssw0rd@localhost:5432/bankdb?sslmode=disable"
 )
 
 var testDB *pgxpool.Pool
 var testQueries *Queries
 
 func TestMain(m *testing.M) {
-	var err error
-	testDB, err = pgxpool.New(context.Background(), dbSource)
+	config, err := utils.LoadConfig("../..")
+	if err != nil {
+		log.Fatal("can not config file", err)
+	}
+	testDB, err = pgxpool.New(context.Background(), config.DBSource)
 	if err != nil {
 		log.Fatal("can not connect to db", err)
 	}

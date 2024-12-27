@@ -1,0 +1,41 @@
+@HOST=http://127.0.0.1
+@PORT=:8000
+@baseURL={{HOST}}{{PORT}}
+
+### Create new account
+POST {{HOST}}{{PORT}}/accounts
+Content-Type: "application/json"
+
+{
+    "Owner": "Anna",
+    "Currency": "USR"
+}
+
+### Get account
+GET {{HOST}}{{PORT}}/accounts/1
+Accept: application/json
+
+### Get account2
+GET {{baseURL}}/accounts/10
+Accept: application/json
+
+### Get account2
+GET {{baseURL}}/accounts/?page_id=1&page_size=10
+Accept: application/json
+
+### Update new account
+POST {{HOST}}{{PORT}}/update
+Content-Type: "application/json"
+
+{
+    "ID": 2,
+    "Balance": 1000
+}
+
+### Delete account
+POST {{HOST}}{{PORT}}/delete
+Content-Type: "application/json"
+
+{
+    "ID": 1
+}
