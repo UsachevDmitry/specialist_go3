@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jackc/pgx/v5"
+	//"github.com/jackc/pgx/v5"
 )
 
 type CreateAccountRequest struct {
@@ -85,25 +85,26 @@ func (server *Server) UpdateAccount(ctx *gin.Context) {
 }
 
 type DeleteAccountRequest struct {
-	ID int64 `json:"id" binding:"required"`
+	ID int64 `uri:"id" binding:"required,min=1"`
 }
 
 func (server *Server) DeleteAccount(ctx *gin.Context) {
-	var req UpdateAccountRequest
-	if err := ctx.ShouldBindJSON(&req); err != nil {
+	var req DeleteAccountRequest
+	if err := ctx.ShouldBindUri(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, errorResponce(err))
+		return
 	}
 
-	id := req.ID
+	//id := req.ID
 
-	err := server.store.DeleteAccount(ctx, id)
+	rows, err := server.store.DeleteAccount(ctx, req.ID)
+	if rows == 0 {
+		ctx.JSON(http.StatusNotFound, gin.H{"Account not found": req.ID})
+		return
+	}
 	if err != nil {
-		if err == pgx.ErrNoRows {
-			ctx.JSON(http.StatusNotFound, errorResponce(err))
-			return
-		}
 		ctx.JSON(http.StatusInternalServerError, errorResponce(err))
 		return
 	}
-	ctx.JSON(http.StatusOK, gin.H{"Deleted Account": id})
+	ctx.JSON(http.StatusOK, gin.H{"Deleted Account": req.ID})
 }

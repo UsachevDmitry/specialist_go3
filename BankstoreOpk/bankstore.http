@@ -16,7 +16,7 @@ GET {{HOST}}{{PORT}}/accounts/1
 Accept: application/json
 
 ### Get account2
-GET {{baseURL}}/accounts/10
+GET {{baseURL}}/accounts/1
 Accept: application/json
 
 ### Get account2
@@ -24,7 +24,7 @@ GET {{baseURL}}/accounts/?page_id=1&page_size=10
 Accept: application/json
 
 ### Update new account
-POST {{HOST}}{{PORT}}/update
+PUT {{HOST}}{{PORT}}/update
 Content-Type: "application/json"
 
 {
@@ -33,9 +33,5 @@ Content-Type: "application/json"
 }
 
 ### Delete account
-POST {{HOST}}{{PORT}}/delete
-Content-Type: "application/json"
-
-{
-    "ID": 1
-}
+DELETE {{HOST}}{{PORT}}/delete/5
+Content-Type: "text/html"

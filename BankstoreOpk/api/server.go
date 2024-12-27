@@ -21,8 +21,8 @@ func NewServer(store *db.Store) *Server {
 	router.POST("/accounts", server.CreateAccount)
 	router.GET("/accounts/:id", server.GetAccount)
 	router.GET("/accounts", server.ListAccounts)
-	router.POST("/update", server.UpdateAccount)
-	router.POST("/delete", server.DeleteAccount)
+	router.PUT("/update", server.UpdateAccount)
+	router.DELETE("/delete/:id", server.DeleteAccount)
 	server.router = router
 	return server
 }
@@ -49,7 +49,7 @@ func (server *Server) GetAccount(ctx *gin.Context) {
 	}
 	account, err := server.store.GetAccount(ctx, req.ID)
 	if err != nil {
-		if err ==pgx.ErrNoRows {
+		if err == pgx.ErrNoRows {
 			ctx.JSON(http.StatusNotFound, errorResponce(err))
 			return
 		}
